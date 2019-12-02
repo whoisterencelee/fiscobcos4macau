@@ -1,7 +1,8 @@
 Run script with bash
 
- 
+immediately if a command exits with a non-zero status 
 
+# default value section
 
 
 
@@ -40,6 +41,7 @@ Run script with bash
 
 
 
+## command line -help output
 
 
 
@@ -68,16 +70,19 @@ Run script with bash
 
 
 
+## log format for warning
 
 
 
 
 
+## log format for information
 
 
 
 
 
+## get script variable
 
 
 
@@ -85,6 +90,7 @@ Run script with bash
 
 
 
+## set script variable
 
 
 
@@ -92,6 +98,7 @@ Run script with bash
 
 
 
+## error print and remove working directory
 
 
 
@@ -101,6 +108,7 @@ Run script with bash
 
 
 
+## commandline parsing
 
 
 
@@ -146,6 +154,7 @@ Run script with bash
 
 
 
+## success output
 
 
 
@@ -167,6 +176,8 @@ Run script with bash
 
 
 
+## check machine requirements
+openssl
 
 
 
@@ -184,6 +195,7 @@ Run script with bash
 
 
 
+## check TASSL China Specific SSL http://www.tass.com.cn
 
 
 
@@ -194,6 +206,7 @@ Run script with bash
 
 
 
+## valid characters for name
 
 
 
@@ -220,6 +233,7 @@ Run script with bash
 
 
 
+## Generate RSA 2048 private and public key for the chain for 10 years
 
 
 
@@ -233,6 +247,7 @@ Run script with bash
 
 
 
+## Generate RSA 2048 private and public keys for agency for 10 years
 
 
 
@@ -255,6 +270,7 @@ Run script with bash
 
 
 
+## make the keys SECP256k1 compatible
 
 
 
@@ -270,6 +286,7 @@ Run script with bash
 
 
 
+## initiate key / cert generations
 
 
 
@@ -295,6 +312,7 @@ Run script with bash
 
 
 
+## TASSL 国密算法 special parameter
 
 
 
@@ -305,6 +323,7 @@ Run script with bash
 
 
 
+## TASSL chain cert generation
 
 
 
@@ -328,6 +347,7 @@ Run script with bash
 
 
 
+## TASSL agency cert generation
 
 
 
@@ -347,6 +367,7 @@ Run script with bash
 
 
 
+## TASSL node cert
 
 
 
@@ -360,6 +381,7 @@ Run script with bash
 
 
 
+# secp256k1 compatible TASSL cert
 
 
 
@@ -394,6 +416,7 @@ Run script with bash
 
 
 
+# generate config.ini ./127.0.0.1/node0/config.ini
 
 
 
@@ -460,6 +483,7 @@ Run script with bash
 
 
 
+## genesis block config ./127.0.0.1/node0/conf/group.1.genesis
 
 
 
@@ -484,6 +508,7 @@ Run script with bash
 
 
 
+## generate group ini ./127.0.0.1/node0/conf/group.1.ini
 
 
 
@@ -515,6 +540,7 @@ Run script with bash
 
 
 
+## generate cert conf cert.cnf
 
 
 
@@ -550,6 +576,7 @@ Run script with bash
 
 
 
+## generate start.sh
 
 
 
@@ -571,6 +598,7 @@ Run script with bash
 
 
 
+## TASSL cert gm
 
 
 
@@ -695,6 +723,7 @@ Run script with bash
 
 
 
+## coreutil script generation
 
 
 
@@ -849,6 +878,7 @@ Run script with bash
 
 
 
+## transmission test script generation
 
 
 
@@ -913,6 +943,7 @@ Run script with bash
 
 
 
+## generate server script ???
 
 
 
@@ -944,6 +975,7 @@ Run script with bash
 
 
 
+## parse IP
 
 
 
@@ -958,6 +990,7 @@ Run script with bash
 
 
 
+## downloader
 
 
 
@@ -981,6 +1014,7 @@ Run script with bash
 
 
 
+## simple download checker
 
 
 
@@ -996,43 +1030,7 @@ Run script with bash
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# MAIN
 
 
 
