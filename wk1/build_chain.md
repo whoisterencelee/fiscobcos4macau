@@ -1033,6 +1033,7 @@ Extract binary
 # MAIN
 
 
+set server(s) IP, why do we need to use fixed IP?
 
 
 
@@ -1045,7 +1046,9 @@ Extract binary
 
 
 
+create nodes/
 
+compatibility version?
 
 
 
@@ -1053,6 +1056,7 @@ Extract binary
 
 
 
+download binary
 
 
 
@@ -1062,17 +1066,21 @@ Extract binary
 
 
 
+generate cert
 
 
 
 
+generate agency/group
 
 
 
 
 
 
+## CERT
 
+cert
 
 
 
@@ -1089,6 +1097,7 @@ Extract binary
 
 
 
+Guomi cert
 
 
 
@@ -1102,6 +1111,7 @@ Extract binary
 
 
 
+## KEYS
 
 
 
@@ -1109,6 +1119,7 @@ Extract binary
 
 
 
+for each ip generate a KEY
 
 
 
@@ -1218,18 +1229,7 @@ Extract binary
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+## Generate configurations
 
 
 
