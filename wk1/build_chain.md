@@ -990,27 +990,27 @@ openssl
 
 
 
-## downloader
+## binary downloader
+
+
+
+linux binary
+macOS binary
+tassl GM binary
 
 
 
 
 
 
+download with curl
+ Download too slow
+  try with slower download
 
 
 
 
-
-
-
-
-
-
-
-
-
-
+Extract binary
 
 
 
@@ -1271,14 +1271,8 @@ openssl
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+## START HERE
+MacOS or linux
+Parse command arguments
+MAIN
+print FISCO BCOS success
