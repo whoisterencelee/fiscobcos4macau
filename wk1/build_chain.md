@@ -1033,7 +1033,7 @@ Extract binary
 # MAIN
 
 
-set server(s) IP, why do we need to use fixed IP?
+set server(s) IP, can use fixed IP or URL
 
 
 
@@ -1046,7 +1046,7 @@ set server(s) IP, why do we need to use fixed IP?
 
 
 
-create nodes/
+create ../nodes/ root directory
 
 compatibility version?
 
@@ -1066,12 +1066,12 @@ download binary
 
 
 
-generate cert
+generate cert config
 
 
 
 
-generate agency/group
+initialize agency/group
 
 
 
@@ -1080,15 +1080,15 @@ generate agency/group
 
 ## CERT
 
-cert
+
+
+check if existing chain cert exists
+generate chain cert
 
 
 
 
-
-
-
-
+	generate agency cert based on chain cert
 
 
 
@@ -1119,7 +1119,7 @@ Guomi cert
 
 
 
-for each ip generate a KEY
+for each ip
 
 
 
@@ -1128,6 +1128,7 @@ for each ip generate a KEY
 
 
 
+	for each node
 
 
 
@@ -1135,6 +1136,7 @@ for each ip generate a KEY
 
 
 
+	generate node cert
 
 
 
@@ -1209,9 +1211,7 @@ for each ip generate a KEY
 
 
 
-
-
-
+sdk cert?
 
 
 
