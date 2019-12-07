@@ -1211,7 +1211,8 @@ for each ip
 
 
 
-sdk cert?
+generate sdk cert for
+listening to the external network Channel and jsonrpc ports while allowing the external network interacts with node through SDK or API.
 
 
 
@@ -1223,6 +1224,9 @@ sdk cert?
 
 
 
+
+
+Reference:https://fisco-bcos-documentation.readthedocs.io/en/latest/docs/manual/build_chain.html
 
 
 
