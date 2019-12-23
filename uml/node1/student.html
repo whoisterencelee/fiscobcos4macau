@@ -1,0 +1,120 @@
+<!doctype html>
+<html><head>
+<meta charset="utf-8">
+</head>
+<body style="margin:0px;display:flex;flex-direction:column;align-items:center;">
+	<style>
+		div { display:flex; flex-direction:column; flex-wrap:wrap; }
+		form { margin:0.5em; display:flex; flex-direction:column; }
+
+		#lessons { flex-direction:row; justify-content:center; }
+		#lessons > div { border:1px solid; margin: 3px; padding: 1em; width:8em; overflow-wrap:break-word; background:#194ea0; color:white; }
+
+		#instructors { flex-direction:row; justify-content:center; }
+		#instructors > div { border:1px solid; margin: 3px; padding: 1em; width:8em; overflow-wrap:break-word;  }
+		#log { font-size: 0.5em; margin-top:2em; overflow-wrap:anywhere; width:90vw; }
+	</style>
+
+<div>
+
+	<div>
+	<form onsubmit="return false"><label>weid</label>
+		<input required id="weid" type="text" placeholder="example: did:weid:0x6efd256d02c1a27675de085b86989fa2ac1badd
+		b" />
+	</form>
+	</div>
+
+	<div>
+	<form onsubmit="newname();return false"><label>how may instructor address you</label>
+		<input id="name" type="text" autofocus="true" placeholder="example: anonymous" />
+	</form>
+	</div>
+
+	<div>
+	<form onsubmit="newinstructor();return false"><label>instructor connection URL</label>
+		<input required id="instructor" type="text" list="whom" placeholder="example: uml.edu.mo/instructor/bryan" />
+	</form>
+	</div>
+
+	<div id="instructors" ></div>
+
+	<datalist id="whom">
+		<option value="http://uml.edu.mo/instructor/胡朝新Charles">胡朝新Charles</option>
+		<option value="http://uml.edu.mo/instructor/锐旗">锐旗</option>
+	</datalist>
+
+</div>
+
+
+<div onclick="interact();return false" style="margin:1em;background:darkred;color:white;border:1px solid darkred;border-radius:8px;align-items:center;box-shadow:0 0 4px grey; padding:1em;">
+	<div style="font-size:10em;">🤔</div><div>Raise or Answer Question</div></div>
+
+<div id="log"></div>
+
+<script>
+
+iurl = ""
+
+// DEMO
+options = dom( "whom" ).childNodes
+for( w=0 ; w<options.length ; w++ ){ 
+	if( options[ w ].tagName == "OPTION" ){
+		var url = options[ w ].value
+		var name = options[ w ].textContent
+		console.log( url )
+		newinstructor( url , name )
+	}
+}
+
+// UI
+function dom( id ){ return document.getElementById( id ) }
+
+function newname( weid , name ){
+	weid = weid ? weid : dom( "weid" ).value
+	name = name ? name : dom( "name" ).value
+	if( weid == "" || name == "" ){
+		alert( "need weid first" )
+		return false
+	}
+
+	send( iurl , { weid : weid , name : name } )
+}
+
+function newinstructor( url , name ){
+	var instructors = dom( "instructors" )
+	var instructorDOM = document.createElement( "div" )
+	instructorDOM.textContent = "🧠 " + name // brain
+	instructorDOM.addEventListener( "click" , evt => {
+		iurl = url
+		dom( "instructor" ).value = url
+		} )
+	iurl = url
+	instructors.appendChild( instructorDOM )
+}
+
+function interact(){
+	var weid = dom( "weid" ).value
+	if( iurl.length == 0 && weid == 0 ){
+		alert( "need weid and instructor before you can attend" )
+		return false
+	}
+	send( iurl , weid )
+}
+
+function log( msg ){
+	dom( "log" ).innerHTML = msg + "<br/>" + dom( "log" ).innerHTML
+}
+
+// API
+
+function send( api , data ){
+	//TODO actually send to API point
+	var msg ="sending " + JSON.stringify( data ) + " to " + api
+	log( msg )
+	console.log( msg )
+}
+
+</script>
+
+</body>
+</html>
