@@ -1,0 +1,166 @@
+<!doctype html>
+<html><head>
+<meta charset="utf-8">
+</head>
+<body style="margin:0px;display:flex;flex-direction:column;align-items:center;">
+	<style>
+		div { display:flex; flex-direction:column; flex-wrap:wrap; }
+		form { margin:0.5em; display:flex; flex-direction:column; }
+
+		#lessons { flex-direction:row; justify-content:center; }
+		#lessons > div { border:1px solid; margin: 3px; padding: 1em; width:8em; overflow-wrap:break-word; background:#194ea0; color:white; }
+
+		#students { flex-direction:row; justify-content:center; }
+		#students > div { border:1px solid; margin: 3px; padding: 1em; width:8em; overflow-wrap:break-word;  }
+		#log { font-size: 0.5em; margin-top:2em; overflow-wrap:anywhere; width:90vw; }
+	</style>
+
+<div>
+	<div>
+	<form onsubmit="newlesson();return false"><label>lesson</label>
+		<input id="module" type="text" autofocus="true" placeholder="example: 2019/12/28 lesson1" />
+	</form>
+	</div>
+
+	<div id="lessons" >
+		<div onclick="newlesson()" style="align-content:center;justify-content:center;font-weight:bold;">+ register</div>
+	</div>
+
+	<div>
+	<form onsubmit="return false"><label>who</label>
+		<input id="who" type="text" list="whom" placeholder="example: did:weid:0x...  or select from below faces" />
+	</form>
+	</div>
+
+	<div id="students" ></div>
+
+	<datalist id="whom">
+		<option value="did:weid:0x6efd256d02c1a27675de085b86989fa2ac1baddb">Terence</option>
+		<option value="did:weid:0x123123123121a27675de085b86989fa212312312">Bryan</option>
+		<option value="did:weid:0x089098098098a27675de085b86989fa207080808">Bianca</option>
+	</datalist>
+
+</div>
+
+<div id="log"></div>
+
+<script>
+
+// DEMO
+weids = dom( "whom" ).childNodes
+for( w=0 ; w<weids.length ; w++ ){ 
+	if( weids[ w ].tagName == "OPTION" ){
+		var weid = weids[ w ].value
+		var name = weids[ w ].textContent
+		console.log( weid )
+		newstudent( weid , name )
+	}
+}
+
+// UI
+function dom( id ){ return document.getElementById( id ) }
+
+function newlesson( lesson ){
+	lesson = lesson ? lesson : dom( "module" ).value
+	
+	if( !register( lesson ) ) return false
+
+	var lessons = dom( "lessons" )
+	var lessonDOM = document.createElement( "div" )
+	
+	lessonDOM.textContent = "📘 " + lesson
+
+	lessonDOM.addEventListener( "click" , evt => {
+		mod = lesson
+		dom( "module" ).value = lesson
+	})
+
+	lessons.appendChild( lessonDOM )
+}
+
+function newstudent( weid , name ){
+	var students = dom( "students" )
+	var studentDOM = document.createElement( "div" )
+	studentDOM.textContent = "✋" + name // raised hand
+	studentDOM.addEventListener( "click" , evt => add( mod , weid ) )
+	students.appendChild( studentDOM )
+}
+
+function log( msg ){
+	dom( "log" ).innerHTML = msg + "<br/>" + dom( "log" ).innerHTML
+}
+
+// API
+mod = ""
+mods={}
+
+function register( text ){
+	text = text ? text : dom( "module" ).value
+	if( text.length = 0 || mods[ text ] ) return false
+	
+	mods[ text ] = new Date()
+
+	send( "/mgr/WeBASE-Node-Manager/contract/transaction" , input( "register" , [ mod ] ) )
+
+	mod = text
+	return true
+}
+
+function add( mod , weid ){
+	if( mod == "" || weid.length == 0 ) return false
+	
+	dom( "who" ).value = weid
+	send( "/mgr/WeBASE-Node-Manager/contract/transaction" , input( "add" , [ mod , weid ] ) )
+}
+
+function send( api , data ){
+	//TODO actually send to API point
+	var msg ="sending " + JSON.stringify( data ) + " to " + api
+	log( msg )
+	console.log( msg )
+}
+
+function input( funcName , funcParam ){
+	return {"contractAddress":"0xf588026b7075b8bed0acbc9dcd5c19128db46156",
+		"contractId":200004,
+		"contractName":"uml_191222a",
+		"funcName": funcName,
+		"funcParam": funcParam,
+		"groupId":"1",
+		"user":"0xb517b976d861c57f35dd8a4cac70e9757b110735"
+		}
+}
+
+/*
+function fetch_did_not_work_needed_login_authorization_token(){
+	data = {"contractAddress":"0xf588026b7075b8bed0acbc9dcd5c19128db46156",
+		"contractId":200004,
+		"contractName":"uml_191222a",
+		"funcName":"add",
+		"funcParam":["the first lesson","next student"],
+		"groupId":"1",
+		"user":"0xb517b976d861c57f35dd8a4cac70e9757b110735"
+		}
+	init = { method : "POST" ,
+		headers : { 
+			Authorization : "Token 9aac2ea521faee4a51501745be3585ec79ca22aede0dfc44f39c27c7722e3e4f" ,
+			"Content-Type" : "application/json;charset=utf-8"
+		} ,
+		body : data ,
+		cache : "no-store" 
+		}
+		
+	req = new Request( '/mgr/WeBASE-Node-Manager/contract/transaction' , init )
+
+	fetch( req ).then( response => { 
+		response.json().then( r => 
+			console.log( r ) 
+			)
+		})
+}
+*/
+
+</script>
+
+</body>
+</html>
