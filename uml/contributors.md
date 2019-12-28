@@ -17,3 +17,6 @@ For non-code contributions
 |19121816	|摩利	|Explained Credential revoke math
 |19121816	|U Tat Meng (Chris)	|Summarized weidentity API
 |19121912	|Terence Lee	|Identify nodes in system
+|19122312	|himl	|Explained Portolio vs Certification in UI
+|19122316	|Terence Lee	|UML UI Explained for instructor and dean
+|19122316	|Terence Lee	|UML Data Usage Calculation

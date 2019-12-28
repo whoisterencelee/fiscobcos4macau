@@ -1,0 +1,49 @@
+{
+  "groupId":1,
+  "uuidStateless":"XXX",
+  "uuidDeploy":"XXX",
+  "signType":0,
+  "contractAddress":"0xf588026b7075b8bed0acbc9dcd5c19128db46156",
+  "contractAbi":[
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "module",
+        "type": "string"
+      },
+      {
+        "name": "who",
+        "type": "string"
+      }
+    ],
+    "name": "add",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "module",
+        "type": "string"
+      }
+    ],
+    "name": "register",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+],
+  "funcName":"register",
+  "funcParam":["191228 lesson one"],
+  "signUserId":700002
+}
