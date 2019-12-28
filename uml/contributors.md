@@ -20,3 +20,6 @@ For non-code contributions
 |19122312	|himl	|Explained Portolio vs Certification in UI
 |19122316	|Terence Lee	|UML UI Explained for instructor and dean
 |19122316	|Terence Lee	|UML Data Usage Calculation
+|19122516	|Daniel Zhou	|Cloud VM setup
+|19122616	|U Tat Meng (Chris)	|UML RestService API
+|19122716	|U Tat Meng (Chris)	|Rest API
