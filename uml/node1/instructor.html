@@ -100,7 +100,7 @@ function register( text ){
 	
 	mods[ text ] = new Date()
 
-	send( "/mgr/WeBASE-Node-Manager/contract/transaction" , input( "register" , [ mod ] ) )
+	send( "/WeBASE-Transaction/trans/send" , input( "register" , [ mod ] ) )
 
 	mod = text
 	return true
@@ -110,7 +110,7 @@ function add( mod , weid ){
 	if( mod == "" || weid.length == 0 ) return false
 	
 	dom( "who" ).value = weid
-	send( "/mgr/WeBASE-Node-Manager/contract/transaction" , input( "add" , [ mod , weid ] ) )
+	send( "/WeBASE-Transaction/trans/send" , input( "add" , [ mod , weid ] ) )
 }
 
 function send( api , data ){
@@ -118,39 +118,13 @@ function send( api , data ){
 	var msg ="sending " + JSON.stringify( data ) + " to " + api
 	log( msg )
 	console.log( msg )
-}
 
-function input( funcName , funcParam ){
-	return {"contractAddress":"0xf588026b7075b8bed0acbc9dcd5c19128db46156",
-		"contractId":200004,
-		"contractName":"uml_191222a",
-		"funcName": funcName,
-		"funcParam": funcParam,
-		"groupId":"1",
-		"user":"0xb517b976d861c57f35dd8a4cac70e9757b110735"
-		}
-}
-
-/*
-function fetch_did_not_work_needed_login_authorization_token(){
-	data = {"contractAddress":"0xf588026b7075b8bed0acbc9dcd5c19128db46156",
-		"contractId":200004,
-		"contractName":"uml_191222a",
-		"funcName":"add",
-		"funcParam":["the first lesson","next student"],
-		"groupId":"1",
-		"user":"0xb517b976d861c57f35dd8a4cac70e9757b110735"
-		}
 	init = { method : "POST" ,
-		headers : { 
-			Authorization : "Token 9aac2ea521faee4a51501745be3585ec79ca22aede0dfc44f39c27c7722e3e4f" ,
-			"Content-Type" : "application/json;charset=utf-8"
-		} ,
-		body : data ,
-		cache : "no-store" 
+		headers : { "Content-Type" : "application/json" } ,
+		body : data
 		}
 		
-	req = new Request( '/mgr/WeBASE-Node-Manager/contract/transaction' , init )
+	req = new Request( api , init )
 
 	fetch( req ).then( response => { 
 		response.json().then( r => 
@@ -158,7 +132,60 @@ function fetch_did_not_work_needed_login_authorization_token(){
 			)
 		})
 }
-*/
+
+function input( funcName , funcParam ){
+	var today = new Date()
+	var output = {
+		  "groupId":1,
+		  "uuidStateless": today.getTime() + "instructor" ,
+		  "uuidDeploy": today.getTime() + "instructor" ,
+		  "signType":0,
+		  "contractAddress":"0xf588026b7075b8bed0acbc9dcd5c19128db46156",
+		  "contractAbi":[
+		  {
+		    "constant": false,
+		    "inputs": [
+		      {
+			"name": "module",
+			"type": "string"
+		      },
+		      {
+			"name": "who",
+			"type": "string"
+		      }
+		    ],
+		    "name": "add",
+		    "outputs": [
+		      {
+			"name": "",
+			"type": "address"
+		      }
+		    ],
+		    "payable": false,
+		    "stateMutability": "nonpayable",
+		    "type": "function"
+		  },
+		  {
+		    "constant": false,
+		    "inputs": [
+		      {
+			"name": "module",
+			"type": "string"
+		      }
+		    ],
+		    "name": "register",
+		    "outputs": [],
+		    "payable": false,
+		    "stateMutability": "nonpayable",
+		    "type": "function"
+		  }
+		],
+		  "funcName": funcName,
+		  "funcParam": funcParam,
+		  "signUserId":700002
+		}
+	return JSON.stringify( output )
+}
 
 </script>
 
